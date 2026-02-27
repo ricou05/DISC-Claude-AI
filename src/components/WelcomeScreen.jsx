@@ -11,7 +11,7 @@ export default function WelcomeScreen({
   onStart,
 }) {
   return (
-    <div className="welcome-screen">
+    <main className="welcome-screen">
       <span className="welcome-badge">Modèle DISC · 25 questions</span>
       <h1 className="welcome-title">
         Quel est votre
@@ -39,23 +39,28 @@ export default function WelcomeScreen({
       </div>
 
       <form className="start-form" onSubmit={onStart}>
-        <label className="form-label">Prénom</label>
+        <label className="form-label" htmlFor="firstname">Prénom</label>
         <input
+          id="firstname"
           className="name-input"
           type="text"
           placeholder="Votre prénom..."
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={40}
+          required
+          autoComplete="given-name"
         />
-        <label className="form-label">Nom</label>
+        <label className="form-label" htmlFor="lastname">Nom</label>
         <input
+          id="lastname"
           className="name-input"
           type="text"
           placeholder="Votre nom..."
           value={lastname}
           onChange={(e) => setLastname(e.target.value)}
           maxLength={60}
+          autoComplete="family-name"
         />
 
         {groups.length > 0 && (
@@ -92,6 +97,6 @@ export default function WelcomeScreen({
           Commencer le test →
         </button>
       </form>
-    </div>
+    </main>
   );
 }

@@ -7,13 +7,14 @@ export default function AdminLogin({
   onLogin,
 }) {
   return (
-    <div className="login-screen">
+    <main className="login-screen">
       <div className="login-card">
-        <div className="login-icon">🔐</div>
         <h2 className="login-title">Espace Admin</h2>
         <p className="login-sub">Accès réservé à l'administrateur</p>
         <form onSubmit={onLogin}>
+          <label htmlFor="admin-user" className="sr-only">Identifiant</label>
           <input
+            id="admin-user"
             className="login-field"
             type="text"
             placeholder="Identifiant"
@@ -21,7 +22,9 @@ export default function AdminLogin({
             onChange={(e) => setLoginUser(e.target.value)}
             autoComplete="username"
           />
+          <label htmlFor="admin-pass" className="sr-only">Mot de passe</label>
           <input
+            id="admin-pass"
             className="login-field"
             type="password"
             placeholder="Mot de passe"
@@ -32,9 +35,9 @@ export default function AdminLogin({
           <button className="btn-admin-login" type="submit">
             Se connecter
           </button>
-          {loginError && <div className="login-error">⚠️ {loginError}</div>}
+          {loginError && <div className="login-error" role="alert">{loginError}</div>}
         </form>
       </div>
-    </div>
+    </main>
   );
 }

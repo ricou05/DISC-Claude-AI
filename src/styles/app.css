@@ -1337,3 +1337,243 @@ body {
     display: none;
   }
 }
+
+/* ── Overview Tab - Groups grid ── */
+.groups-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.group-overview-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.group-overview-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.group-overview-card:focus-visible {
+  outline: 2px solid #f5d800;
+  outline-offset: 2px;
+}
+
+.group-overview-card.unassigned {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  cursor: default;
+}
+
+.group-overview-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.group-overview-name.unassigned {
+  color: #555;
+}
+
+.group-overview-count {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.group-overview-chart {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.group-overview-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.group-overview-bar-label {
+  font-size: 11px;
+  font-weight: 700;
+  width: 20px;
+}
+
+.group-overview-bar-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.group-overview-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.group-overview-bar-value {
+  font-size: 10px;
+  color: #555;
+  width: 28px;
+  text-align: right;
+}
+
+.group-overview-empty {
+  font-size: 12px;
+  color: #333;
+}
+
+/* ── Quadrant Map Section ── */
+.quadrant-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ── Groups Tab ── */
+.new-group-form {
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 216, 0, 0.3);
+  border-radius: 12px;
+}
+
+.new-group-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  margin-bottom: 8px;
+}
+
+.group-disc-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.group-disc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.group-disc-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.group-disc-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.group-disc-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.group-disc-bar-pct {
+  font-size: 11px;
+  color: #555;
+  width: 32px;
+  text-align: right;
+}
+
+/* ── Results Tab ── */
+.results-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ── Error Boundary ── */
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.error-boundary-card {
+  background: rgba(232, 57, 58, 0.06);
+  border: 1px solid rgba(232, 57, 58, 0.2);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 440px;
+  text-align: center;
+}
+
+.error-boundary-card h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.error-boundary-card p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* ── Focus visible ── */
+*:focus-visible {
+  outline: 2px solid #f5d800;
+  outline-offset: 2px;
+}
+
+/* ── Screen reader only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

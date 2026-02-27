@@ -11,8 +11,8 @@ import AdminPanel from "./components/AdminPanel";
 import ConfirmDialog from "./components/ConfirmDialog";
 import "./styles/app.css";
 
-const ADMIN_USER = "eric";
-const ADMIN_PASS = "Disc*06";
+const ADMIN_USER = import.meta.env.VITE_ADMIN_USER || "admin";
+const ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS || "";
 
 const initialState = {
   view: "welcome",
