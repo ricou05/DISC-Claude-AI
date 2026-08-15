@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useCallback } from "react";
 import { supabase } from "./utils/supabase";
 import { QUESTIONS } from "./data/questions";
 import { calculateScores, getDominant, fullName } from "./utils/helpers";
@@ -63,7 +63,10 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const set = (payload) => dispatch({ type: "SET", payload });
+  const set = useCallback(
+    (payload) => dispatch({ type: "SET", payload }),
+    [],
+  );
 
   const {
     view,
@@ -95,24 +98,9 @@ export default function App() {
     deleteGroupTarget,
   } = state;
 
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash.startsWith("#result/")) {
-      loadSharedResult(hash.slice(8));
-    }
-    loadGroups();
-  }, []);
-
-  useEffect(() => {
-    if (view === "admin") {
-      loadParticipants();
-      loadGroups();
-    }
-  }, [view]);
-
   // ── Data loaders ──
 
-  async function loadGroups() {
+  const loadGroups = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from("teams")
@@ -123,9 +111,9 @@ export default function App() {
     } catch (e) {
       console.error(e);
     }
-  }
+  }, [set]);
 
-  async function loadParticipants() {
+  const loadParticipants = useCallback(async () => {
     set({ loadingP: true });
     try {
       const { data, error } = await supabase
@@ -137,9 +125,9 @@ export default function App() {
     } catch (e) {
       set({ error: "Erreur : " + e.message, loadingP: false });
     }
-  }
+  }, [set]);
 
-  async function loadSharedResult(id) {
+  const loadSharedResult = useCallback(async (id) => {
     try {
       const { data, error } = await supabase
         .from("results")
@@ -151,7 +139,22 @@ export default function App() {
     } catch (e) {
       console.error(e);
     }
-  }
+  }, [set]);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith("#result/")) {
+      loadSharedResult(hash.slice(8));
+    }
+    loadGroups();
+  }, [loadGroups, loadSharedResult]);
+
+  useEffect(() => {
+    if (view === "admin") {
+      loadParticipants();
+      loadGroups();
+    }
+  }, [view, loadGroups, loadParticipants]);
 
   // ── Actions ──
 
