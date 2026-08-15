@@ -58,6 +58,16 @@ body {
   color: #f5d800;
 }
 
+.app-version {
+  color: #777;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 7px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
 .header-nav {
   margin-left: auto;
   display: flex;
@@ -143,42 +153,38 @@ body {
   margin-bottom: 36px;
 }
 
-.disc-badges {
-  display: flex;
-  gap: 10px;
+.test-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 760px;
   margin-bottom: 40px;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
-.disc-badge {
-  padding: 8px 18px;
-  border-radius: 24px;
+.guide-item {
+  padding: 18px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+
+.guide-item strong,
+.guide-item span {
+  display: block;
+}
+
+.guide-item strong {
+  color: #e8e8e8;
   font-size: 13px;
-  font-weight: 700;
-  animation: float 3s ease-in-out infinite;
+  margin-bottom: 7px;
 }
 
-.disc-badge:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.disc-badge:nth-child(3) {
-  animation-delay: 0.8s;
-}
-
-.disc-badge:nth-child(4) {
-  animation-delay: 1.2s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
+.guide-item span {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 /* ── Start form ── */
@@ -190,6 +196,57 @@ body {
   border-radius: 20px;
   padding: 28px;
   text-align: left;
+}
+
+.version-notes {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 28px;
+  text-align: left;
+  color: #777;
+  font-size: 12px;
+}
+
+.version-notes summary {
+  cursor: pointer;
+  text-align: center;
+  color: #888;
+}
+
+.version-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.version-entry {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+}
+
+.version-entry > span {
+  color: #f5d800;
+  font-weight: 700;
+}
+
+.version-entry strong {
+  color: #ddd;
+}
+
+.version-entry p {
+  margin-top: 4px;
+  line-height: 1.55;
+}
+
+@media (max-width: 680px) {
+  .test-guide {
+    grid-template-columns: 1fr;
+  }
 }
 
 .form-label {
