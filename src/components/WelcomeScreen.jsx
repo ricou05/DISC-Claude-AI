@@ -24,6 +24,18 @@ export default function WelcomeScreen({
         compétences : il propose un éclairage pour mieux vous comprendre et
         faciliter les échanges avec les autres.
       </p>
+      <figure className="disc-illustration">
+        <img
+          src="/disc-wheel-v1.png"
+          alt="Cercle composé de quatre parts équilibrées rouge, jaune, verte et bleue"
+          width="320"
+          height="320"
+        />
+        <figcaption>
+          Une lecture en quatre dimensions, dont la combinaison se révèle à la
+          fin du questionnaire.
+        </figcaption>
+      </figure>
       <div className="test-guide" aria-label="Déroulement du questionnaire">
         <div className="guide-item">
           <strong>25 situations</strong>

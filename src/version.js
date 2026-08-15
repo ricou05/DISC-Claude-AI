@@ -1,6 +1,12 @@
-export const APP_VERSION = "1.1.0";
+export const APP_VERSION = "1.2.0";
 
 export const VERSION_HISTORY = [
+  {
+    version: "1.2.0",
+    title: "Le modèle illustré sans dévoiler le résultat",
+    rationale:
+      "Un cercle à quatre couleurs présente visuellement le principe du DISC, sans associer de qualificatif aux couleurs avant la fin du questionnaire.",
+  },
   {
     version: "1.1.0",
     title: "Une découverte plus neutre",
