@@ -1,4 +1,4 @@
-import { PROFILES } from "../data/profiles";
+import { APP_VERSION, VERSION_HISTORY } from "../version";
 
 export default function WelcomeScreen({
   name,
@@ -12,30 +12,31 @@ export default function WelcomeScreen({
 }) {
   return (
     <div className="welcome-screen">
-      <span className="welcome-badge">Modèle DISC · 25 questions</span>
+      <span className="welcome-badge">Questionnaire de découverte · 25 questions</span>
       <h1 className="welcome-title">
-        Quel est votre
+        Explorez votre manière
         <br />
-        <em>profil DISC ?</em>
+        <em>d’agir et d’interagir</em>
       </h1>
       <p className="welcome-sub">
-        Identifiez votre style comportemental dominant et apprenez à mieux
-        communiquer avec votre entourage.
+        Ce questionnaire vous invite à observer vos préférences dans des
+        situations du quotidien. Il ne mesure ni votre valeur ni vos
+        compétences : il propose un éclairage pour mieux vous comprendre et
+        faciliter les échanges avec les autres.
       </p>
-      <div className="disc-badges">
-        {Object.values(PROFILES).map((p) => (
-          <div
-            key={p.disc}
-            className="disc-badge"
-            style={{
-              background: p.bg,
-              color: p.color,
-              border: `1.5px solid ${p.color}40`,
-            }}
-          >
-            {p.disc} — {p.label}
-          </div>
-        ))}
+      <div className="test-guide" aria-label="Déroulement du questionnaire">
+        <div className="guide-item">
+          <strong>25 situations</strong>
+          <span>Choisissez ce qui vous ressemble le plus spontanément.</span>
+        </div>
+        <div className="guide-item">
+          <strong>Sans bonne réponse</strong>
+          <span>Chaque manière de réagir possède son utilité selon le contexte.</span>
+        </div>
+        <div className="guide-item">
+          <strong>Une synthèse à la fin</strong>
+          <span>Votre résultat vous donnera des pistes de réflexion concrètes.</span>
+        </div>
       </div>
 
       <form className="start-form" onSubmit={onStart}>
@@ -92,6 +93,21 @@ export default function WelcomeScreen({
           Commencer le test →
         </button>
       </form>
+
+      <details className="version-notes">
+        <summary>Version {APP_VERSION} · Pourquoi cette évolution ?</summary>
+        <div className="version-list">
+          {VERSION_HISTORY.map((release) => (
+            <article className="version-entry" key={release.version}>
+              <span>v{release.version}</span>
+              <div>
+                <strong>{release.title}</strong>
+                <p>{release.rationale}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </details>
     </div>
   );
 }

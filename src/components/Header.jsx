@@ -1,3 +1,5 @@
+import { APP_VERSION } from "../version";
+
 export default function Header({ view, adminLogged, onNavigate }) {
   return (
     <header className="header">
@@ -5,6 +7,7 @@ export default function Header({ view, adminLogged, onNavigate }) {
       <div className="logo-text">
         DISC <span>Discovery</span>
       </div>
+      <span className="app-version">v{APP_VERSION}</span>
       <nav className="header-nav">
         <button
           className={`nav-btn ${view !== "admin" && view !== "adminlogin" ? "active" : ""}`}
