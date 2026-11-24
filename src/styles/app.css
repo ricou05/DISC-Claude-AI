@@ -30,9 +30,16 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   position: sticky;
   top: 0;
-  background: rgba(15, 17, 23, 0.96);
-  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 17, 23, 0.97) 0%,
+    rgba(20, 22, 32, 0.97) 50%,
+    rgba(15, 17, 23, 0.97) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 100;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .logo-mark {
@@ -46,6 +53,12 @@ body {
   font-weight: 900;
   color: #0f1117;
   font-size: 14px;
+  box-shadow: 0 0 12px rgba(245, 216, 0, 0.35), 0 0 24px rgba(245, 216, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.logo-mark:hover {
+  box-shadow: 0 0 18px rgba(245, 216, 0, 0.55), 0 0 36px rgba(245, 216, 0, 0.25);
 }
 
 .logo-text {
@@ -1413,4 +1426,62 @@ body {
   .rt-grp {
     display: none;
   }
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-screen,
+.quiz-screen,
+.results-screen {
+  animation: fadeInUp 0.4s ease both;
+}
+
+.option-btn {
+  transition: background 0.18s ease, border-color 0.18s ease,
+    transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.option-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.option-btn.selected {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245, 216, 0, 0.18);
+}
+
+/* ── Footer ── */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 18px 24px;
+  margin-top: auto;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.03em;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  user-select: none;
+}
+
+.footer-dot {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

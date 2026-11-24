@@ -9,6 +9,7 @@ import ResultsScreen from "./components/ResultsScreen";
 import AdminLogin from "./components/AdminLogin";
 import AdminPanel from "./components/AdminPanel";
 import ConfirmDialog from "./components/ConfirmDialog";
+import Footer from "./components/Footer";
 import "./styles/app.css";
 
 const ADMIN_USER = "eric";
@@ -462,6 +463,7 @@ export default function App() {
       )}
 
       {toast && <div className="copy-toast">{toast}</div>}
+      <Footer />
     </div>
   );
 }
